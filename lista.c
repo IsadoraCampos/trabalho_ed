@@ -12,28 +12,31 @@ struct node{
 
 typedef struct node Node;
 
-Node* adicionar(int id, char* descricao, int tempo, char* situacao){
+Node* criarNo(int id, char* descricao, int tempo, char* situacao){
     Node newNode= (Node *)malloc(sizeof(Node));
-    printf("Insira o ID da tarefa: \n");
-    scanf("%d", &f->id);
-    getchar();
-    printf("Insira a descrição da tarefa: \n");
-    fgets(f->descricao, sizeof(f->descricao), stdin);
-    f->descricao[strcspn(f->descricao, "\n")] = '\0';
-    printf("Insira o tempo(em horas) para a realização da tarefa\n");
-    scanf("%d", &f->tempo);
-    strcpy(f->situacao, "Ativa");
-    printf("Situação: Ativa\n");
-    f->next = NULL;
-    if (l == NULL){
-        l = f; return l;
-    } 
-    for (aux=l;aux->next!=NULL;aux=aux->next);
-    aux->next = f;
-    return l;
+    newNode->id = id;
+    strcpy(newNode->descricao, descricao);
+    newNode->tempo = tempo;
+    strcpy(newNode->situacao, situacao);
+    newNode->left = newNode->right = NULL;
+    return newNode;
 }
 
-void excluir(Lista **l, 
+Node* insertTree(Node* node, Node* newNode){
+    if(node == NULL){
+        return newNode;
+    }
+    if(newNode -> id < node -> id){
+        node -> left = insertTree(node->left, newNode);
+    }else{
+        node -> right = insertTree(node->right, newNode);
+    }
+    return node;
+}
+
+
+void excluir(Lista **l)
+
 void vizualizar(Lista *l){
     int op;
     Lista *aux;
