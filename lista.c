@@ -2,23 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct lista{
+struct node{
     int id;
     char descricao[30];
     int tempo;
     char situacao[10];
-    struct lista *next;
+    struct node *left, *right;
 };
 
-typedef struct lista Lista;
+typedef struct node Node;
 
-void initLista(Lista *l){
-    l = NULL;
-}
-
-Lista* adicionar(Lista *l){
-    Lista *aux, *f;
-    f = (Lista *)malloc(sizeof(Lista));
+Node* adicionar(int id, char* descricao, int tempo, char* situacao){
+    Node newNode= (Node *)malloc(sizeof(Node));
     printf("Insira o ID da tarefa: \n");
     scanf("%d", &f->id);
     getchar();
@@ -38,6 +33,7 @@ Lista* adicionar(Lista *l){
     return l;
 }
 
+void excluir(Lista **l, 
 void vizualizar(Lista *l){
     int op;
     Lista *aux;
