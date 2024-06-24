@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lista.h"
 
 int main(){
     
     int opcao, id, tempo;
-    Node* root = NULL;
+    char descricao[30];
+    Node  *root = NULL;
     
     while (1){
         printf("\n----- Menu de Opções -----\n");
@@ -19,14 +21,16 @@ int main(){
         if (opcao == 1){
            printf("Insira o ID da tarefa: \n");
            scanf("%d", &id);
-           printf("Insira o tempo(em horas) para a realização da tarefa\n");
+           getchar();
+           printf("Insira a descrição: \n");
+           fgets(descricao, sizeof(descricao), stdin);
+           descricao[strcspn(descricao, "\n")] = '\0';
+           printf("Insira o tempo(em horas) para a realização da tarefa: \n");
            scanf("%d", &tempo);
-           printf("Insira a descrição\n");
-           scanf("%d", &descricao);
-           insertTree(root, criarNo(id, descricao, tempo, Ativo));
+           root = insertTree(root, criarNo(id, descricao, tempo, "Ativo"));
         }
         if (opcao == 2){
-            vizualizar(l);
+            printf("huwh\n");
         }
         if (opcao == 5){
             break;
