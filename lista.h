@@ -1,7 +1,7 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-struct lista {
+struct node {
     int id;
     char descricao[30];
     int tempo;
@@ -9,12 +9,10 @@ struct lista {
     struct lista *next;
 };
 
-typedef struct lista Lista;
+typedef struct node Node;
 
-void initLista(Lista *l);
-Lista* adicionar(Lista *l);
-void vizualizar(Lista *l);
-void concluir(Lista *l);
-
+Node* criarNo(int id, char* descricao, int tempo, char* situacao);
+Node* insertTree(Node* node, Node* newNode);
+void visualisar(Node *root);
 
 #endif
