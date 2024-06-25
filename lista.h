@@ -15,5 +15,6 @@ Node* criarNo(int id, char* descricao, int tempo, char* situacao);
 Node* insertTree(Node* node, Node* newNode);
 Node* ordTempo(Node *node, Node* newNode);
 void visualizar(Node *root, int n);
+Node* concluir(Node *root, int n);
 
 #endif
