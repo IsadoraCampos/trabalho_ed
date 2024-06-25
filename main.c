@@ -5,7 +5,7 @@
 
 int main(){
     
-    int opcao, id, tempo, op1;
+    int opcao, id, tempo, op1, op2;
     char descricao[30];
     Node  *root = NULL;
     Node *root1 = NULL;
@@ -39,6 +39,12 @@ int main(){
                 printf("Erro ao digitar. Tente novamente.\n");
             }
             visualizar(root1, op1);
+        }
+        if (opcao == 3){
+            printf("Digite o ID da tarefa que deseja concluir: \n");
+            scanf("%d", &op2);
+            root = concluir(root,op2);
+            
         }
         if (opcao == 5){
             break;
