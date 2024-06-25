@@ -67,3 +67,6 @@ void visualizar(Node *root, int n){
     }
 }
 
+Node* concluir(Node *root, int n){
+    
+}
