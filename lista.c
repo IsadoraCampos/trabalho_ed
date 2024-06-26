@@ -6,7 +6,7 @@ struct node{
     int id;
     char descricao[30];
     int tempo;
-    char situacao[10];
+    char situacao[20];
     struct node *left, *right;
 };
 
@@ -67,6 +67,37 @@ void visualizar(Node *root, int n){
     }
 }
 
-Node* concluir(Node *root, int n){
+int concluir(Node *root, int n){
+    if (root == NULL){          // utilizando o método de busca pré-ordem
+        return -1;
+    }
+    if (root->id == n){
+      strcpy(root->situacao, "Concluída");     // se achou retorna 1
+      return 1;
+    } 
     
+    int resul1 = concluir(root->left,n);    // se achou no lado esquerdo da árvore retorna 1
+    if (resul1 == 1){                  
+        return 1;
+    }
+    
+    int resul2 = concluir(root->right,n);    // se achou no lado direito da árvore retorna 1
+    if (resul2 == 1){
+        return 1;
+    }
+    return -1;   // se não encontrou a tarefa
 }
+
+int atualizaRoot1(Node *root,Node *root1,int n){  // atualiza a segunda árvore para a visualização
+    if (concluir(root,n) == 1){
+      concluir(root1, n);
+      return 1;
+    }
+    else{
+        return -1;
+    }
+}
+
+
+
+
