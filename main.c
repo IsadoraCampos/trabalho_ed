@@ -5,7 +5,7 @@
 
 int main(){
     
-    int opcao, id, tempo, op1, op2;
+    int opcao, id, tempo, op1, op2, valor_concluir;
     char descricao[30];
     Node  *root = NULL;
     Node *root1 = NULL;
@@ -43,7 +43,13 @@ int main(){
         if (opcao == 3){
             printf("Digite o ID da tarefa que deseja concluir: \n");
             scanf("%d", &op2);
-            root = concluir(root,op2);
+            valor_concluir = concluir(root,op2);
+            valor_concluir = atualizaRoot1(root,root1,op2);
+            if (valor_concluir == 1){
+                printf("Tarefa concluída com sucesso!");
+            } else{
+                printf("Tarefa não encontrada.");
+            }
             
         }
         if (opcao == 5){
