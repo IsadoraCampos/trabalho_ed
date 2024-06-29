@@ -98,6 +98,45 @@ int atualizaRoot1(Node *root,Node *root1,int n){  // atualiza a segunda árvore 
     }
 }
 
+// Encontrar o menor valor na arvore
+Node* minValueNode(Node* node) {
+    Node* current = node;
+    while (current && current->left != NULL)
+        current = current->left;
+    return current;
+}
 
+Node* deleteNode(Node* root, int id) { //deletar um elemento da árvore com busca de id
+    if (root == NULL) return root;
+
+    if (id < root->id)
+        root->left = deleteNode(root->left, id); // se o id for menor que a raiz ele vai para a esquerda e chama novamente a função
+    else if (id > root->id)
+        root->right = deleteNode(root->right, id); // se o id for maior que a raiz ele vai para a direita e chama novamente a função
+    else {  // achamos o nó do id que queremos deletar
+        if (root->left == NULL) { //verificando se na esquerda tem um nó, se não tiver apaga 
+            Node* temp = root->right;
+            free(root);
+            return temp;
+        } else if (root->right == NULL) { //verificando se na direita tem um nó
+            Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        // Caso o nó tenha dois filhos, ele vai pegar o proximo (menor na arvore à direita)
+        Node* temp = minValueNode(root->right);
+
+        // Copiar o conteúdo do proximo in-order para este nó, ou seja, vai subistituir o nó que excluimos pelo próximo
+        root->id = temp->id;
+        strcpy(root->descricao, temp->descricao);
+        root->tempo = temp->tempo;
+        strcpy(root->situacao, temp->situacao);
+
+        // Deletar o proximo in-order
+        root->right = deleteNode(root->right, temp->id);
+    }
+    return root;
+}
 
 
