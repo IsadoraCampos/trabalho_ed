@@ -5,9 +5,9 @@
 
 int main(){
     
-    int opcao, id, tempo, op1, op2, valor_concluir;
+    int opcao, id, tempo, op1, op2, valor_concluir, taskDeleted = 0;;
     char descricao[30];
-    Node  *root = NULL;
+    Node *root = NULL;
     Node *root1 = NULL;
     
     while (1){
@@ -20,8 +20,7 @@ int main(){
         printf("Digite a sua opção: \n");
         scanf("%d", &opcao);
         if (opcao == 1){
-           printf("Insira o ID da tarefa: \n");
-           scanf("%d", &id);
+           id = gerarID(root); 
            getchar();
            printf("Insira a descrição: \n");
            fgets(descricao, sizeof(descricao), stdin);
@@ -46,9 +45,23 @@ int main(){
             valor_concluir = concluir(root,op2);
             valor_concluir = atualizaRoot1(root,root1,op2);
             if (valor_concluir == 1){
-                printf("Tarefa concluída com sucesso!");
+                printf("Tarefa concluída com sucesso!\n");
             } else{
-                printf("Tarefa não encontrada.");
+                printf("Tarefa não encontrada.\n");
+            }
+            
+        }
+        if (opcao == 4){
+           printf("Listarei as tarefas disponíveis para excluir:\n");
+           visualizar(root1, 3);
+           printf("Digite o ID da tarefa que deseja excluir: \n");
+           scanf("%d", &id);
+           taskDeleted = 0;
+           root1 = deleteNode(root1, id, &taskDeleted);
+           if (taskDeleted) {
+               printf("A tarefa com ID %d foi excluída com sucesso.\n", id);
+            } else {
+               printf("A tarefa com ID %d não foi encontrada.\n", id);
             }
             
         }
