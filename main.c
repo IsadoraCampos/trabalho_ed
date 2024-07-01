@@ -20,8 +20,7 @@ int main(){
         printf("Digite a sua opção: \n");
         scanf("%d", &opcao);
         if (opcao == 1){
-           id = gerarID(root); 
-           getchar();
+           id = gerarID(root);
            printf("Insira a descrição: \n");
            fgets(descricao, sizeof(descricao), stdin);
            descricao[strcspn(descricao, "\n")] = '\0';
@@ -29,6 +28,8 @@ int main(){
            scanf("%d", &tempo);
            root = insertTree(root, criarNo(id, descricao, tempo, "Ativo"));
            root1 = ordTempo(root1, criarNo(id, descricao, tempo, "Ativo"));
+        }
+
         }
         if (opcao == 2){
             printf("=== Menu de Visualização ===\n");
