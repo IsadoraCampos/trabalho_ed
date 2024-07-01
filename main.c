@@ -40,6 +40,8 @@ int main(){
             visualizar(root1, op1);
         }
         if (opcao == 3){
+            printf("Listarei todas as tarefas disponíveis para concluir: \n");
+            visualizar(root1,1);
             printf("Digite o ID da tarefa que deseja concluir: \n");
             scanf("%d", &op2);
             valor_concluir = concluir(root,op2);
