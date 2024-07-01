@@ -23,7 +23,7 @@ Node* criarNo(int id, char* descricao, int tempo, char* situacao){  // função 
     return newNode;
 }
 
-//verifica se existe na árvore
+//verifica se o id existe na árvore
 int idExiste(Node *root, int id) {
     if (root == NULL) {
         return false;
@@ -40,7 +40,7 @@ int idExiste(Node *root, int id) {
 
 // gera um novo id e chama a função que verifica se existe
 int gerarID(Node *root) {
-    int novoID = rand() % 100; // Limitado até 50 conforme solicitado
+    int novoID = rand() % 100; // Limitado até 100
     if (!idExiste(root, novoID)) {
         return novoID;
     } else {
